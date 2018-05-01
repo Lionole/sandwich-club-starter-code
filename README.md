@@ -1,4 +1,5 @@
-# Sandwich Club Project Starter Code
+# Sandwich Club Project Starter Code Provided by dnbit of UDacity
+# All changes made after the Initial Commit (Starter Code) was written by me.
 
 ## Project Overview
 In this project, you will complete the **Sandwich Club** app to
