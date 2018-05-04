@@ -14,15 +14,24 @@ import com.udacity.sandwichclub.utils.JsonUtils;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
+    @BindView(R.id.origin_tv) TextView placeOfOriginTextView;
+    @BindView(R.id.also_known_tv) TextView alsoKnownTextView;
+    @BindView(R.id.ingredients_tv) TextView ingredientsTextView;
+    @BindView(R.id.description_tv) TextView descriptionTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
 
@@ -62,11 +71,6 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sandwich) {
 
-        TextView placeOfOriginTextView = findViewById(R.id.origin_tv);
-        TextView alsoKnownTextView = findViewById(R.id.also_known_tv);
-        TextView ingredientsTextView = findViewById(R.id.ingredients_tv);
-        TextView descriptionTextView = findViewById(R.id.description_tv);
-
         if (!sandwich.getPlaceOfOrigin().isEmpty()) {
             placeOfOriginTextView.setText(sandwich.getPlaceOfOrigin());
         } else {
@@ -86,6 +90,6 @@ public class DetailActivity extends AppCompatActivity {
             if (i > 0) { ingredientsTextView.append("\n"); }
             ingredientsTextView.append(ingredientsList.get(i));
         }
-        descriptionTextView.setText("\t\t\t" + sandwich.getDescription());
+        descriptionTextView.setText(getString(R.string.detail_description_content, sandwich.getDescription()));
     }
 }
